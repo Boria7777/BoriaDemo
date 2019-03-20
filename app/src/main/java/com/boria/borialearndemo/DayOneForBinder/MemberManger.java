@@ -21,4 +21,6 @@ public interface MemberManger extends IInterface {
   List<MemberBean> getMemList();
 
   void addMember(MemberBean member);
+
+  int add(int num1, int num2);
 }

@@ -50,6 +50,11 @@ public class BinderService extends Service {
       memberBeanList.add(member);
       Log.e(TAG, memberBeanList.size() + "");
     }
+
+    @Override
+    public int add(int num1, int num2) {
+      return num1 + num2;
+    }
   };
 
 

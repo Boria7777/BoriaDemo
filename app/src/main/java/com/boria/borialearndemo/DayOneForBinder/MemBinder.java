@@ -27,6 +27,7 @@ public abstract class MemBinder extends Binder implements MemberManger {
   public static final String DESCRIPTOR = "com.boria.borialearndemo.DayOneForBinder.NumBinder";
   public static final int TRANSAVTION_addMem = IBinder.FIRST_CALL_TRANSACTION;
   public static final int TRANSAVTION_getMemList = IBinder.FIRST_CALL_TRANSACTION + 1;
+  public static final int TRANSAVTION_addNum = IBinder.FIRST_CALL_TRANSACTION + 2;
 
   public static MemberManger asInterface(IBinder mIBinder) {
     IInterface iInterface = mIBinder.queryLocalInterface(DESCRIPTOR);
@@ -59,6 +60,16 @@ public abstract class MemBinder extends Binder implements MemberManger {
         reply.writeNoException();
         reply.writeTypedList(result);
         return true;
+      case TRANSAVTION_addNum:
+        data.enforceInterface(DESCRIPTOR);
+        MemberBean arg0 = null;
+        if (data.readInt() != 0) {
+          arg0 = MemberBean.CREATOR.createFromParcel(data);
+        }
+        this.addMember(arg0);
+        reply.writeNoException();
+        return true;
+
     }
 
     return super.onTransact(code, data, reply, flags);
@@ -107,6 +118,11 @@ public abstract class MemBinder extends Binder implements MemberManger {
         replay.recycle();
         data.recycle();
       }
+    }
+
+    @Override
+    public int add(int num1, int num2) {
+      return num1 + num2;
     }
 
     @Override
