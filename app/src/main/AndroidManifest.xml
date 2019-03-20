@@ -33,6 +33,21 @@
         <action android:name="com.boria.borialearndemo.AidlService"/>
       </intent-filter>
     </service>
+
+    <activity
+      android:name=".DayOneForBinder.BinderActivity"
+      android:configChanges="orientation|keyboard|keyboardHidden"
+      android:screenOrientation="portrait"
+      android:windowSoftInputMode="stateAlwaysHidden"/>
+
+    <service
+      android:name=".DayOneForBinder.BinderService"
+      android:process=":remote2"
+      android:exported="true">
+      <intent-filter>
+        <action android:name="com.boria.borialearndemo.BinderService"/>
+      </intent-filter>
+    </service>
   </application>
 
 </manifest>
