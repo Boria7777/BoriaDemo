@@ -1,6 +1,7 @@
 package com.boria.borialearndemo.DayOneForBinder;
 
 import android.os.IInterface;
+import android.os.RemoteException;
 
 import java.util.List;
 
@@ -22,5 +23,5 @@ public interface MemberManger extends IInterface {
 
   void addMember(MemberBean member);
 
-  int add(int num1, int num2);
+  int add(int num1, int num2) throws RemoteException;
 }

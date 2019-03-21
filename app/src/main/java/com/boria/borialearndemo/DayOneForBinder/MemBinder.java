@@ -8,6 +8,8 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.support.annotation.NonNull;
 
+
+
 import java.util.List;
 
 /***********************************************************************************************
@@ -62,12 +64,13 @@ public abstract class MemBinder extends Binder implements MemberManger {
         return true;
       case TRANSAVTION_addNum:
         data.enforceInterface(DESCRIPTOR);
-        MemberBean arg0 = null;
-        if (data.readInt() != 0) {
-          arg0 = MemberBean.CREATOR.createFromParcel(data);
-        }
-        this.addMember(arg0);
+        int _arg0;
+        _arg0 = data.readInt();
+        int _arg1;
+        _arg1 = data.readInt();
+        int _result = this.add(_arg0, _arg1);
         reply.writeNoException();
+        reply.writeInt(_result);
         return true;
 
     }
@@ -121,8 +124,23 @@ public abstract class MemBinder extends Binder implements MemberManger {
     }
 
     @Override
-    public int add(int num1, int num2) {
-      return num1 + num2;
+    public int add(int num1, int num2) throws RemoteException {
+      android.os.Parcel _data = android.os.Parcel.obtain();
+      android.os.Parcel _reply = android.os.Parcel.obtain();
+      int _result;
+      try {
+        _data.writeInterfaceToken(DESCRIPTOR);
+        _data.writeInt(num1);
+        _data.writeInt(num2);
+        mIBinder.transact(MemBinder.TRANSAVTION_addNum, _data, _reply, 0);
+        _reply.readException();
+        _result = _reply.readInt();
+      }
+      finally {
+        _reply.recycle();
+        _data.recycle();
+      }
+      return _result;
     }
 
     @Override
