@@ -17,6 +17,7 @@ import android.view.View;
 
 import com.boria.borialearndemo.DayOneForAIDL.AidlActivity;
 import com.boria.borialearndemo.DayOneForBinder.BinderActivity;
+import com.boria.borialearndemo.DayThreeLiveData.LiveDataActivity;
 
 public class MainActivity extends AppCompatActivity
   implements NavigationView.OnNavigationItemSelectedListener {
@@ -89,11 +90,12 @@ public class MainActivity extends AppCompatActivity
       //start a activity for aidl learning
       Intent intent = new Intent(this, AidlActivity.class);
       startActivity(intent);
-    } else if (id == R.id.nav_gallery) {
+    } else if (id == R.id.nav_binder) {
       Intent intent = new Intent(this, BinderActivity.class);
       startActivity(intent);
-    } else if (id == R.id.nav_slideshow) {
-
+    } else if (id == R.id.nav_datalive) {
+      Intent intent = new Intent(this, LiveDataActivity.class);
+      startActivity(intent);
     } else if (id == R.id.nav_manage) {
 
     } else if (id == R.id.nav_share) {
